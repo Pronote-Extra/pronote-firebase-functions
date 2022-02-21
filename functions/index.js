@@ -53,7 +53,7 @@ exports.testPronoteAPI = functions.https.onRequest(async (req, res) => {
     res.send('Email sent successfully.');
 });
 
-exports.pronoteAPI = functions.pubsub.schedule('every 1 minutes').onRun(async(context) => {
+exports.pronoteAPI = functions.pubsub.schedule('every 1 minutes').timeZone('Europe/Paris').onRun(async(context) => {
     let url = process.env.PRONOTE_API_LINK;
     let data = [];
     await axios.post(url, {}, {
